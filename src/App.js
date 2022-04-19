@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import { Menu } from "./Components/Menu";
+import { GameArea } from "./Components/GameArea";
+import { HUD } from "./Components/HUD";
+import { useState } from "react";
 
-function App() {
+const App = () => {
+  const [bobaBux, setBobaBux] = useState(0);
+  const [boba, setBoba] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppWrapper className="App">
+      <HUD bobaBux={bobaBux} boba={boba} />
+      <GameArea bobaBux={bobaBux} boba={boba} setBoba={setBoba} />
+      <Menu />
+    </AppWrapper>
   );
-}
+};
 
 export default App;
+
+const AppWrapper = styled.div`
+  background-color: plum;
+  height: 100vh;
+`;
